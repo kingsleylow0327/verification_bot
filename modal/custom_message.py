@@ -4,7 +4,7 @@ from logger import Logger
 logger_mod = Logger("Custom Message")
 logger = logger_mod.get_logger()
 
-class CustomMessage(discord.ui.Modal, title="Approval Message"):
+class CustomMessage(discord.ui.Modal, title="Custom Message"):
     custom_message = discord.ui.TextInput(
         label="Custom approval message",
         placeholder="Type Custom Message here",
