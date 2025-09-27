@@ -1,4 +1,3 @@
-from sys import exception
 import discord
 import message as ms
 from logger import Logger
