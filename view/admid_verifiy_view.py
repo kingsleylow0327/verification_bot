@@ -60,12 +60,12 @@ class AdminVerifyView(View):
         try:
             member = interaction.guild.get_member(self.user_info.player_id)
             role = discord.utils.get(interaction.guild.roles, name="potato100")
-            await member.remove_roles(role)
+            await member.add_roles(role)
         except Exception as e:
-            logger.error(f"Member with ID {self.user_info.player_id} failed to remove role due to:")
+            logger.error(f"Member with ID {self.user_info.player_id} failed to assigned role due to:")
             logger.error(e)
-            await interaction.channel.send(f"Member with ID {self.user_info.player_id} failed to remove role, please proceed with manual remove if this have no issue")
-    
+            await interaction.channel.send(f"Member with ID {self.user_info.player_id} failed to assigned role, please proceed with manual assign if this have no issue")
+
     
     @discord.ui.button(label="Reject with Message", emoji="❌", style=discord.ButtonStyle.grey, custom_id="reject_message")
     async def reject_message_button(self, interaction: discord.Interaction, button: Button):
