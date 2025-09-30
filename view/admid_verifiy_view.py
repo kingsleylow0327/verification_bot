@@ -4,19 +4,26 @@ from logger import Logger
 from discord.ui import Button, View
 from discord.interactions import Interaction
 from modal.custom_message import CustomMessage
+from dto.user_info import UserInfo
 
 logger_mod = Logger("Admin Verify View")
 logger = logger_mod.get_logger()
 
 class AdminVerifyView(View):
     def __init__(self, config, user_info):
-        super().__init__()
+        super().__init__(timeout=None)
         self.config = config
         self.user_info = user_info
 
 
     @discord.ui.button(label="Approve", emoji="✅", style=discord.ButtonStyle.grey, custom_id="approve")
     async def approve_button(self, interaction: discord.Interaction, button: Button):
+        if self.user_info is None:
+            message = await interaction.channel.fetch_message(interaction.message.id)
+            embeded_msg = message.embeds[0].description
+            uid, player_id = [x.split(": ")[1] for x in embeded_msg.split(", ")]
+            self.user_info = UserInfo(int(player_id), uid)
+        
         await self.send_thread(interaction.guild, self.user_info.player_id, ms.APPROVED)
         await interaction.message.edit(view=None)
         try:

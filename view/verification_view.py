@@ -10,6 +10,6 @@ class PotatoValidateView(discord.ui.View):
         self.config = config
 
 
-    @discord.ui.button(label="[提交 UID | Submit UFC UID]", style=discord.ButtonStyle.blurple, custom_id="update_vip")
+    @discord.ui.button(label="提交 UID | Submit UFC UID", style=discord.ButtonStyle.blurple, custom_id="update_vip")
     async def submit_uid(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.send_modal(SubmitUIDModal(self.config))

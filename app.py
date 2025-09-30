@@ -5,9 +5,10 @@ from discord.ext import commands
 from config import Config
 from logger import Logger
 from view.verification_view import PotatoValidateView
+from view.admid_verifiy_view import AdminVerifyView
 
 # Logger setup
-logger_mod = Logger("Manager")
+logger_mod = Logger("Potato")
 logger = logger_mod.get_logger()
 
 # Client setup
@@ -24,6 +25,8 @@ bot = commands.Bot(command_prefix="!",intents=intents)
 @bot.event
 async def on_ready():
     await bot.tree.sync()
+    view = AdminVerifyView(config, None)
+    bot.add_view(view)
     await run_verification()
     logger.info("Potato is Ready")
 

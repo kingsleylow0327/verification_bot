@@ -3,8 +3,9 @@ import message as ms
 from view.admid_verifiy_view import AdminVerifyView
 from view.go_back_view import GoBackView
 from discord.interactions import Interaction
+from dto.user_info import UserInfo
 
-TITLE = "[提交 UID | Submit UFC UID]"
+TITLE = "提交 UID | Submit UFC UID"
 class SubmitUIDModal(discord.ui.Modal, title=TITLE):
 
     def __init__(self, config):
@@ -24,13 +25,7 @@ class SubmitUIDModal(discord.ui.Modal, title=TITLE):
             description=f"UID: {uid}, Player ID: {player_id}",
             color=0xE733FF
         )
-        admin_view = AdminVerifyView(self.config, user_info(player_id, uid))
+        admin_view = AdminVerifyView(self.config, UserInfo(player_id, uid))
         await admin_channel.send(embed=embed, view=admin_view)
         go_back_view=GoBackView(self.config)
         await interaction.response.send_message(ms.WAIT_REVIEW, ephemeral=True, view=go_back_view)
-
-
-class user_info():
-    def __init__(self, player_id, uid):
-        self.player_id = player_id
-        self.uid = uid

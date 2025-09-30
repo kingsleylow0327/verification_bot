@@ -7,4 +7,4 @@ class GoBackView(discord.ui.View):
         super().__init__(timeout=None)
         self.config = config
         url = f"https://discord.com/channels/{config.GUILD_ID}/{config.LANDING_CHANNEL_ID}"
-        self.add_item(Button(label="⬅️ [返回 | Go Back]", style=discord.ButtonStyle.link, url=url))
+        self.add_item(Button(label="⬅️ 返回 | Go Back", style=discord.ButtonStyle.link, url=url))
