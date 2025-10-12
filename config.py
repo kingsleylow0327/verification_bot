@@ -10,5 +10,7 @@ class Config():
         self.GUILD_ID = os.getenv('GUILD_ID')
         self.LANDING_CHANNEL_ID=os.getenv('LANDING_CHANNEL_ID')
         self.USER_APPLY_CHANNEL_ID = os.getenv('USER_APPLY_CHANNEL_ID')
+        self.XYZ_CHANNEL_ID = os.getenv('XYZ_CHANNEL_ID')
         self.ADMIN_CHANNEL_ID = os.getenv('ADMIN_CHANNEL_ID')
         self.PUBLIC_THREAD_CHANNEL_ID = os.getenv('PUBLIC_THREAD_CHANNEL_ID')
+        self.GBOT_GSHEET_ID = os.getenv('GBOT_GSHEET_ID')

@@ -6,6 +6,7 @@ from config import Config
 from logger import Logger
 from view.verification_view import PotatoValidateView
 from view.admid_verifiy_view import AdminVerifyView
+from view.founded_xyz_view import FoundedXYZView
 
 # Logger setup
 logger_mod = Logger("Potato")
@@ -28,6 +29,7 @@ async def on_ready():
     view = AdminVerifyView(config, None)
     bot.add_view(view)
     await run_verification()
+    await run_xyz()
     logger.info("Potato is Ready")
 
 async def run_verification():
@@ -40,5 +42,14 @@ async def run_verification():
     embed.set_image(url="attachment://instruction.gif")
     view = PotatoValidateView(config)
     await admin_channel.send(embed=embed, view=view, file=file)
+
+async def run_xyz():
+    admin_channel = bot.get_channel(int(config.XYZ_CHANNEL_ID))
+    embed = discord.Embed(
+        title=ms.XYZ_TITLE,
+        color=0xE733FF  # Purple color,
+    )
+    view = FoundedXYZView(config)
+    await admin_channel.send(embed=embed, view=view)
 
 bot.run(config.TOKEN)

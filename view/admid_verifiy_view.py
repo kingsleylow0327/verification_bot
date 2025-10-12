@@ -27,7 +27,7 @@ class AdminVerifyView(View):
         await self.send_thread(interaction.guild, self.user_info.player_id, ms.APPROVED)
         await interaction.message.edit(view=None)
         try:
-            member = interaction.guild.get_member(self.user_info.player_id)
+            member = interaction.guild.get_member(int(self.user_info.player_id))
             role = discord.utils.get(interaction.guild.roles, name="potato100")
             await member.add_roles(role)
         except Exception as e:
@@ -41,7 +41,7 @@ class AdminVerifyView(View):
         await self.send_thread(interaction.guild, self.user_info.player_id, ms.REJECTED)
         await interaction.message.edit(view=None)
         try:
-            member = interaction.guild.get_member(self.user_info.player_id)
+            member = interaction.guild.get_member(int(self.user_info.player_id))
             role = discord.utils.get(interaction.guild.roles, name="potato100")
             await member.remove_roles(role)
         except Exception as e:
@@ -65,7 +65,7 @@ class AdminVerifyView(View):
         await self.send_thread(interaction.guild, self.user_info.player_id, custom_msg)
         await interaction.message.edit(view=None)
         try:
-            member = interaction.guild.get_member(self.user_info.player_id)
+            member = interaction.guild.get_member(int(self.user_info.player_id))
             role = discord.utils.get(interaction.guild.roles, name="potato100")
             await member.add_roles(role)
         except Exception as e:
@@ -89,7 +89,7 @@ class AdminVerifyView(View):
         await self.send_thread(interaction.guild, self.user_info.player_id, custom_msg)
         await interaction.message.edit(view=None)
         try:
-            member = interaction.guild.get_member(self.user_info.player_id)
+            member = interaction.guild.get_member(int(self.user_info.player_id))
             role = discord.utils.get(interaction.guild.roles, name="potato100")
             await member.remove_roles(role)
         except Exception as e:
@@ -100,7 +100,7 @@ class AdminVerifyView(View):
 
     async def send_thread(self, guild, member_id, message):
         channel = guild.get_channel(int(self.config.PUBLIC_THREAD_CHANNEL_ID))
-        user = guild.get_member(member_id) 
+        user = guild.get_member(int(member_id))
         thread = await channel.create_thread(
             name=f"Private with {user.display_name}",
             type=discord.ChannelType.private_thread,

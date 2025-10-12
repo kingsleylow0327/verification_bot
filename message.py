@@ -11,3 +11,9 @@ APPROVED="""✅ 绿灯亮啦！你的 UID 已获批准 —— 欢迎加入！
 
 REJECTED = """❌ Oops... Your UID didn’t make the cut this time. 😢
 ❌ 很抱歉… 你的 UID 这次没有通过审核。😢"""
+
+XYZ_TITLE = """📤 提交你的 FundedXYZ 注册信息 | Submit Your Details for FundedXYZ"""
+
+XYZ_WAIT = """就快完成了！让我们回到 Potato Squad，继续下一步的引导吧。
+Almost there! Let’s head back to Potato Squad and get you to the next step.
+"""

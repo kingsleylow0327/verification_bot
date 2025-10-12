@@ -1,5 +1,7 @@
 import discord
 import message as ms
+
+from config import Config
 from view.admid_verifiy_view import AdminVerifyView
 from view.go_back_view import GoBackView
 from discord.interactions import Interaction
@@ -8,7 +10,7 @@ from dto.user_info import UserInfo
 TITLE = "提交 UID | Submit UFC UID"
 class SubmitUIDModal(discord.ui.Modal, title=TITLE):
 
-    def __init__(self, config):
+    def __init__(self, config: Config):
         self.config = config
         super().__init__(title=TITLE, timeout=120)
 
@@ -21,7 +23,7 @@ class SubmitUIDModal(discord.ui.Modal, title=TITLE):
         guild = interaction.guild
         admin_channel = guild.get_channel(int(self.config.ADMIN_CHANNEL_ID))
         embed = discord.Embed(
-            title=f"{interaction.user.display_name} submited UFC UID",
+            title=f"[UFC] {interaction.user.display_name} submited UFC UID",
             description=f"UID: {uid}, Player ID: {player_id}",
             color=0xE733FF
         )
