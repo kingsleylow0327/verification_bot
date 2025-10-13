@@ -14,6 +14,6 @@ REJECTED = """❌ Oops... Your UID didn’t make the cut this time. 😢
 
 XYZ_TITLE = """📤 提交你的 FundedXYZ 注册信息 | Submit Your Details for FundedXYZ"""
 
-XYZ_WAIT = """就快完成了！让我们回到 Potato Squad，继续下一步的引导吧。
-Almost there! Let’s head back to Potato Squad and get you to the next step.
+XYZ_WAIT = """谢谢你提交资料！让我们回到 Potato Squad，继续下一步的引导吧。
+Thank you for submitting your details! Let’s head back to Potato Squad and get you to the next step.
 """

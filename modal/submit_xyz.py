@@ -35,7 +35,5 @@ class SubmitXYZModal(discord.ui.Modal, title=TITLE):
         gsheet_service = GoogleSheetService(self.config.GBOT_GSHEET_ID)
         gsheet_service.append_row([player_id, uid, name, email])
 
-        admin_view = AdminVerifyView(self.config, UserInfo(player_id, uid))
-        await admin_channel.send(embed=embed, view=admin_view)
         go_back_view=GoBackView(self.config)
         await interaction.response.send_message(ms.XYZ_WAIT, ephemeral=True, view=go_back_view)
